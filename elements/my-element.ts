@@ -17,7 +17,7 @@ class MyElement extends HTMLElement {
   }
 
   render() {
-    this.shadowRoot.innerHTML = `
+    this.shadowRoot!.innerHTML = `
       <h2>MyElement</h2>
       <p>Message is '${this.getAttribute("message")}'</p>
     `
