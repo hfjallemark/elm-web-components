@@ -17,27 +17,26 @@ type Msg
 
 main : Program Never Model Msg
 main =
-    program
-        { init = init
-        , subscriptions = \_ -> Sub.none
+    beginnerProgram
+        { model = model
         , update = update
         , view = view
         }
 
 
-init : ( Model, Cmd Msg )
-init =
-    ( { greeting = "Say something!" }, Cmd.none )
+model : Model
+model =
+    { greeting = "Say something!" }
 
 
-update : Msg -> Model -> ( Model, Cmd Msg )
+update : Msg -> Model -> Model
 update msg model =
     case msg of
         SayGoodbye ->
-            ( { model | greeting = "Good bye!" }, Cmd.none )
+            { model | greeting = "Good bye!" }
 
         SayHello ->
-            ( { model | greeting = "Hello" }, Cmd.none )
+            { model | greeting = "Hello" }
 
 
 view : Model -> Html Msg
