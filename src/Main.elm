@@ -13,6 +13,7 @@ type alias Model =
 type Msg
     = SayGoodbye
     | SayHello
+    | Test String
 
 
 main : Program Never Model Msg
@@ -38,13 +39,16 @@ update msg model =
         SayHello ->
             { model | greeting = "Hello" }
 
+        Test value ->
+            { model | greeting = value }
+
 
 view : Model -> Html Msg
 view model =
     div []
         [ h1 [] [ text "Greeter" ]
         , myElement [ message model.greeting ]
-        , myLitElement [ message model.greeting ]
+        , myLitElement [ message model.greeting, onTest Test ]
         , button [ onClick SayHello ] [ text "Say Hello" ]
         , button [ onClick SayGoodbye ] [ text "Say Goodbye" ]
         ]
